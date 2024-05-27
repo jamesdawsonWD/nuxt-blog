@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { MoonIcon, SunIcon } from "@heroicons/vue/16/solid";
 
 const useCheckScrolledPassedPoint = (scrollAmount: number) => {
   const hasPassed = ref(false);
@@ -43,7 +42,6 @@ const { hasPassed: scrollPassed } = useCheckScrolledPassedPoint(100);
             <SunIcon v-else class="w-8 h-8 fill-foreground" />
           </ToggleGroupItem>
         </ToggleGroup> -->
-        <MoonIcon class="w-8 h-8 fill-foreground" />
       </div>
     </div>
     <div class="my-40 ">
