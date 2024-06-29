@@ -1,9 +1,26 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const rollTextSpeed = 300;
+</script>
 
 <template>
   <NuxtLayout>
     <ContentDoc v-slot="{ doc }">
-      <article class="prose prose-2xl mx-auto">
+      <article
+        class="prose prose-2xl mx-auto !text-foreground prose-headings:text-foreground"
+        v-motion="{
+          initial: {
+            opacity: 0,
+            y: 20,
+          },
+          enter: {
+            opacity: 1,
+            y: 0,
+            transition: {
+              delay: rollTextSpeed * 1,
+            },
+          },
+        }"
+      >
         <div class="flex justify-between w-full">
           <p class="text-center">{{ doc.pubDate }}</p>
           <p>by James Dawson</p>
@@ -14,8 +31,12 @@
           :src="`/blogs/${doc.heroImage}`"
           class="rounded-xl"
         />
-        <h1 class="text-center">{{ doc.title }}</h1>
-        <ContentRenderer :value="doc" />
+        <h1 class="text-center">
+          {{ doc.title }}
+        </h1>
+        <div>
+          <ContentRenderer :value="doc" />
+        </div>
       </article>
     </ContentDoc>
   </NuxtLayout>

@@ -25,25 +25,16 @@ const { hasPassed: scrollPassed } = useCheckScrolledPassedPoint(100);
   <div class="dark bg-background w-full relative overflow-x-hidden">
     <div class="w-screen h-40 absolute -top-6 z-30 blur-xl opacity-20"></div>
     <div
-      class="flex w-full px-24 py-4 items-center justify-between z-40 fixed transition"
+      class="flex w-full px-24 py-4 items-center justify-center z-40 fixed transition"
       :class="[scrollPassed ? 'bg-background border-b border-primary/60 ' : '']"
     >
       <NuxtLink to="/">
-        <img
-
-          :src="`/_build.svg`"
-          class="rounded-xl"
+        <SvgoBuidlLogo
+          class="h-16 w-40"
+          :fontControlled="false"
+          :filled="true"
         />
       </NuxtLink>
-
-      <div class="flex gap-4 items-center">
-        <!-- <ToggleGroup type="single">
-          <ToggleGroupItem value="a" @click="darkmode = !darkmode">
-            <MoonIcon v-if="!darkmode" class="w-8 h-8 fill-foreground" />
-            <SunIcon v-else class="w-8 h-8 fill-foreground" />
-          </ToggleGroupItem>
-        </ToggleGroup> -->
-      </div>
     </div>
     <div class="my-40">
       <slot />

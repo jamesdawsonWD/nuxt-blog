@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     "shadcn-nuxt",
     "@nuxtjs/google-fonts",
     "@vueuse/motion/nuxt",
+    "nuxt-svgo"
   ],
 
   googleFonts: {

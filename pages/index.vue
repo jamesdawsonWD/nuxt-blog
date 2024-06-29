@@ -22,7 +22,7 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
     <section class="mx-auto mt-60">
       <div class="relative">
         <h5
-          class="font-inter font-extralight text-foreground text-center leading-none text-xl tracking-[40px]"
+          class="font-inter font-extralight text-foreground text-center leading-none text-xl tracking-[40px] absolute left-0 right-0"
           v-motion="{
             initial: {
               opacity: 0,
@@ -207,8 +207,8 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
           </h2>
           <p class="text-foreground px-2">{{ article.description }}</p>
           <div class="flex justify-between items-center px-2 mt-4">
-            <p class="text-foreground">James Dawson</p>
-            <p class="text-foreground">{{ article.pubDate }}</p>
+            <p class="text-foreground font-extralight tracking-wide">James Dawson</p>
+            <p class="text-foreground font-extralight tracking-wide">{{ article.pubDate }}</p>
           </div>
         </NuxtLink>
       </ContentList>

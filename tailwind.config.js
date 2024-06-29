@@ -14,6 +14,7 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+   
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -90,5 +91,5 @@ module.exports = {
       },
     },
   },
-  plugins: [animate],
+  plugins: [animate, require("@tailwindcss/typography")],
 };
