@@ -10,10 +10,20 @@
   "dependencies": {
     "@nuxt/content": "^2.12.1",
     "@nuxt/image": "^1.7.0",
-    "@nuxtjs/tailwindcss": "^6.12.0",
-    "nuxt": "^3.11.2"
+    "@nuxtjs/google-fonts": "^3.2.0",
+    "@vueuse/motion": "^2.2.3",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-vue-next": "^0.399.0",
+    "nuxt": "^3.11.2",
+    "radix-vue": "^1.8.5",
+    "shadcn-nuxt": "^0.10.4",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.13"
+    "@nuxtjs/tailwindcss": "^6.12.0",
+    "@tailwindcss/typography": "^0.5.13",
+    "typescript": "^5.5.2"
   }
 }

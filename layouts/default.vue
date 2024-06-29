@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const useCheckScrolledPassedPoint = (scrollAmount: number) => {
   const hasPassed = ref(false);
 
@@ -23,16 +22,18 @@ const useCheckScrolledPassedPoint = (scrollAmount: number) => {
 const { hasPassed: scrollPassed } = useCheckScrolledPassedPoint(100);
 </script>
 <template>
-  <div class="w-full relative overflow-x-hidden">
-    <div
-      class="dark:bg-gradient-to-r from-primary to-[#0070F3] w-screen h-40 absolute -top-6 z-30 blur-xl opacity-20"
-    ></div>
+  <div class="dark bg-background w-full relative overflow-x-hidden">
+    <div class="w-screen h-40 absolute -top-6 z-30 blur-xl opacity-20"></div>
     <div
       class="flex w-full px-24 py-4 items-center justify-between z-40 fixed transition"
       :class="[scrollPassed ? 'bg-background border-b border-primary/60 ' : '']"
     >
       <NuxtLink to="/">
-        James Dawson
+        <img
+
+          :src="`/_build.svg`"
+          class="rounded-xl"
+        />
       </NuxtLink>
 
       <div class="flex gap-4 items-center">
@@ -44,7 +45,7 @@ const { hasPassed: scrollPassed } = useCheckScrolledPassedPoint(100);
         </ToggleGroup> -->
       </div>
     </div>
-    <div class="my-40 ">
+    <div class="my-40">
       <slot />
     </div>
   </div>
