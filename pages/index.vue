@@ -214,7 +214,7 @@ const handleSubmitNewsletter = async (email: string) => {
       </div>
     </section>
     <section
-      class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mx-auto gap-20 pt-40 lg:px-40 items-center justify-center"
+      class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mx-auto gap-20 pt-40 px-8 md:px-12 lg:px-40 "
       v-motion="{
         initial: {
           opacity: 0,
@@ -228,12 +228,12 @@ const handleSubmitNewsletter = async (email: string) => {
         <NuxtLink
           v-for="article in list"
           :key="article._path"
-          class="prose"
+          class="prose w-fit mx-auto"
           :to="`${article._path}`"
         >
           <NuxtImg
             :width="500"
-            :height="500"
+            :height="300"
             :src="`/blogs/${article.heroImage}`"
             class="rounded-xl"
           />
