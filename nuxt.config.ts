@@ -41,7 +41,7 @@ export default defineNuxtConfig({
   content: {
     highlight: {
       // Theme used in all color schemes.
-      theme: "catppuccin-macchiato",
+      theme: "material-theme-darker",
     },
   },
 });

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { _opacity } from "#tailwind-config/theme";
 import { useResizeObserver } from "@vueuse/core";
+import Input from "~/components/ui/input/Input.vue";
+import { toast } from "vue-sonner";
 
 const subtitleRef = ref<HTMLElement | null>(null);
 const headerRef = ref<HTMLElement | null>(null);
@@ -8,6 +10,13 @@ const subtitleHeight = ref(0);
 const headerHeight = ref(0);
 const subtitleX = ref(0);
 const rollTextSpeed = 200;
+const email = ref<string | null>(null);
+const isSignedup = ref(false);
+
+onMounted(() => {
+  isSignedup.value = !!localStorage.getItem("signedup");
+});
+
 useResizeObserver([subtitleRef, headerRef], (entries) => {
   const subtitle = entries[0];
   const header = entries[1];
@@ -16,13 +25,31 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
   subtitleHeight.value = sHeight;
   headerHeight.value = hHeight;
 });
+
+const handleSubmitNewsletter = async (email: string) => {
+  const response = await $fetch("/api/newsletter", {
+    method: "POST",
+    body: { email },
+  });
+
+  if (response.statusCode === 200) {
+    toast(response.body);
+    localStorage.setItem("signedup", "true");
+    isSignedup.value = true;
+  } else {
+    console.log("Error in handleSubmitNewsletter:", response.body);
+    toast("Error", {
+      description: response.body || "An error occurred",
+    });
+  }
+};
 </script>
 <template>
   <NuxtLayout>
     <section class="mx-auto mt-60">
       <div class="relative">
         <h5
-          class="font-inter font-extralight text-foreground text-center leading-none text-xl tracking-[40px] absolute left-0 right-0"
+          class="font-inter font-extralight text-foreground text-center leading-none text-xl tracking-[10px] lg:tracking-[30px] absolute -top-10 left-0 right-0"
           v-motion="{
             initial: {
               opacity: 0,
@@ -30,7 +57,7 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
             enter: {
               opacity: 1,
               transition: {
-                delay: rollTextSpeed * 6,
+                delay: rollTextSpeed * 7,
               },
             },
           }"
@@ -113,11 +140,9 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
             v-motion="{
               initial: {
                 opacity: 0,
-                scale: 100,
               },
               enter: {
                 opacity: 1,
-                scale: 1,
                 transition: {
                   delay: rollTextSpeed * 4,
                   duration: 300,
@@ -131,30 +156,11 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
       </div>
       <div :style="{ 'margin-top': `${Math.floor(headerHeight) / 1.88}px` }">
         <p
-          class="font-inter text-foreground text-center pt-20 text-2xl"
+          class="font-inter text-foreground text-center pt-20 text-lg xl:text-2xl"
           v-motion="{
             initial: {
               opacity: 0,
-              y: 40,
-            },
-            enter: {
-              opacity: 1,
-              y: 0,
-              transition: {
-                delay: rollTextSpeed * 6,
-              },
-            },
-          }"
-        >
-          This blog is for the people who want to
-          <span class="text-primary">>></span><b>build</b> cool shit. <br />
-          We discuss code, design, prototyping, hackathons & growth.
-        </p>
-        <div
-          v-motion="{
-            initial: {
-              opacity: 0,
-              y: 40,
+              y: 10,
             },
             enter: {
               opacity: 1,
@@ -164,28 +170,57 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
               },
             },
           }"
+        >
+          This blog is for the people who want to
+          <span class="text-primary">>></span><b>build</b> cool shit.
+        </p>
+        <div
+          v-motion="{
+            initial: {
+              opacity: 0,
+              y: 10,
+            },
+            enter: {
+              opacity: 1,
+              y: 0,
+              transition: {
+                delay: rollTextSpeed * 8,
+              },
+            },
+          }"
           class="flex items-center justify-center flex-col gap-8 pt-20"
         >
-          <Button class="mx-auto drop-shadow-header">Join for free</Button>
-          <p class="font-inter text-foreground text-2xl">
-            The
-            <span class="text-primary">>></span><b>build</b> newsletter drops
-            every Sunday.
+          <div class="flex gap-4 max-w-md w-full" v-if="!isSignedup">
+            <Input
+              type="email"
+              placeholder="Enter your email"
+              class="w-full text-foreground"
+              v-model="email"
+            />
+            <Button class="mx-auto" @click="handleSubmitNewsletter(email)"
+              >Join for free</Button
+            >
+          </div>
+          <p
+            v-else
+            class="font-inter text-foreground text-md xl:text-lg text-center"
+          >
+            You are <span class="text-primary">signed up</span>
+          </p>
+          <p class="font-inter text-foreground text-md xl:text-lg text-center">
+            New blog posts <i>every Sunday</i>.
           </p>
         </div>
       </div>
     </section>
     <section
-      class="grid grid-cols-12 max-w-7xl mx-auto gap-20 pt-40"
+      class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mx-auto gap-20 pt-40 lg:px-40 items-center justify-center"
       v-motion="{
         initial: {
           opacity: 0,
         },
         enter: {
           opacity: 1,
-          transition: {
-            delay: rollTextSpeed * 6,
-          },
         },
       }"
     >
@@ -193,7 +228,7 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
         <NuxtLink
           v-for="article in list"
           :key="article._path"
-          class="col-span-4 prose"
+          class="prose"
           :to="`${article._path}`"
         >
           <NuxtImg
@@ -207,8 +242,12 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
           </h2>
           <p class="text-foreground px-2">{{ article.description }}</p>
           <div class="flex justify-between items-center px-2 mt-4">
-            <p class="text-foreground font-extralight tracking-wide">James Dawson</p>
-            <p class="text-foreground font-extralight tracking-wide">{{ article.pubDate }}</p>
+            <p class="text-foreground font-extralight tracking-wide">
+              James Dawson
+            </p>
+            <p class="text-foreground font-extralight tracking-wide">
+              {{ article.pubDate }}
+            </p>
           </div>
         </NuxtLink>
       </ContentList>

@@ -6,7 +6,7 @@ const rollTextSpeed = 300;
   <NuxtLayout>
     <ContentDoc v-slot="{ doc }">
       <article
-        class="prose prose-2xl mx-auto !text-foreground prose-headings:text-foreground"
+        class="prose prose-neutral prose-2xl mx-auto !text-foreground prose-headings:text-foreground prose-a:text-primary prose-strong:text-foreground prose-code:text-foreground "
         v-motion="{
           initial: {
             opacity: 0,

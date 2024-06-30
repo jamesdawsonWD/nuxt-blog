@@ -59,7 +59,7 @@ I have made a very simple todo app, we have the logic for adding and removing to
 
 While this looks neat on page with very little logic, when it comes to the real world this won't suffice. Let's see what happens if we add in functionality to start a timer when we select an item as a priority.
 
-#### A little bit more complex:*
+### A little bit more complex:
 
 Ok, we now we have thought of a cool feature for our todo app! What if we could have some kind of timer to track when we start a priority todo! What a great idea! Let's add it in!
 
