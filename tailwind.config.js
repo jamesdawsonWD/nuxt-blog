@@ -14,8 +14,75 @@ module.exports = {
         "2xl": "1400px",
       },
     },
-   
+
     extend: {
+      typography: ({ theme }) => ({
+        pink: {
+          css: {
+            "--tw-prose-body": "hsl(var(--foreground))",
+            "--tw-prose-headings": "hsl(var(--foreground))",
+            "--tw-prose-lead": "hsl(var(--foreground))",
+            "--tw-prose-links": "hsl(var(--primary))",
+            "--tw-prose-bold": "hsl(var(--foreground))",
+            "--tw-prose-counters": "hsl(var(--foreground))",
+            "--tw-prose-bullets": "hsl(var(--foreground))",
+            "--tw-prose-hr": "hsl(var(--foreground))",
+            "--tw-prose-quotes": "hsl(var(--foreground))",
+            "--tw-prose-quote-borders": "hsl(var(--foreground))",
+            "--tw-prose-captions": "hsl(var(--foreground))",
+            "--tw-prose-code": "hsl(var(--foreground))",
+            "--tw-prose-pre-code": "hsl(var(--background))",
+            "--tw-prose-pre-bg": "hsl(var(--background))",
+            "--tw-prose-th-borders": "hsl(var(--foreground))",
+            "--tw-prose-td-borders": "hsl(var(--foreground))",
+            "--tw-prose-invert-body": "hsl(var(--foreground))",
+            "--tw-prose-invert-headings": "hsl(var(--foreground))",
+            "--tw-prose-invert-lead": "hsl(var(--foreground))",
+            "--tw-prose-invert-links": "hsl(var(--foreground))",
+            "--tw-prose-invert-bold": "hsl(var(--foreground))",
+            "--tw-prose-invert-counters": "hsl(var(--foreground))",
+            "--tw-prose-invert-bullets": "hsl(var(--foreground))",
+            "--tw-prose-invert-hr": "hsl(var(--foreground))",
+            "--tw-prose-invert-quotes": "hsl(var(--foreground))",
+            "--tw-prose-invert-quote-borders": "hsl(var(--foreground))",
+            "--tw-prose-invert-captions": "hsl(var(--foreground))",
+            "--tw-prose-invert-code": "hsl(var(--background))",
+            "--tw-prose-invert-pre-code": "hsl(var(--foreground))",
+            "--tw-prose-invert-pre-bg": "rgb(0 0 0 / 50%)",
+            "--tw-prose-invert-th-borders": "hsl(var(--foreground))",
+            "--tw-prose-invert-td-borders": "hsl(var(--foreground))",
+
+            code: {
+              padding: "4px",
+              background: "hsl(var(--card))",
+              border: "1px solid hsl(var(--border))",
+              borderRadius: "8px",
+            },
+            "code::before": {
+              content: '""',
+            },
+            "code::after": {
+              content: '""',
+            },
+            pre: {
+              borderRadius: "8px",
+              padding: "8px",
+              background: "hsl(var(--card))",
+              fontWeight: "inherit",
+              color: "inherit",
+              border: "1px solid hsl(var(--border))",
+              fontSize: "inherit",
+              fontFamily: "inherit",
+              lineHeight: "inherit",
+            },
+
+            "pre code": {
+              padding: "0px !important",
+              border: "none",
+            },
+          },
+        },
+      }),
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

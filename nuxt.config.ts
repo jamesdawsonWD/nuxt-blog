@@ -8,9 +8,8 @@ export default defineNuxtConfig({
     "shadcn-nuxt",
     "@nuxtjs/google-fonts",
     "@vueuse/motion/nuxt",
-    "nuxt-svgo"
+    "nuxt-svgo",
   ],
-
   googleFonts: {
     families: {
       "Julius+Sans+One": true,
@@ -41,7 +40,7 @@ export default defineNuxtConfig({
   content: {
     highlight: {
       // Theme used in all color schemes.
-      theme: "material-theme-darker",
+      theme: "github-dark",
     },
   },
 });
