@@ -22,8 +22,8 @@ export default defineEventHandler(async (event: any) => {
     await resend.emails.send({
       from: "onboarding@resend.dev",
       to: email,
-      subject: "Hello World",
-      html: "<p>Congrats on sending your <strong>first email</strong>!</p>",
+      subject: "Hello, builder",
+      html: "<p>Thank you so much for joining the community and supporting our mission of bring builders together. <strong>We drop our newsletter every Sunday</strong>! So make sure you keep an eye out for that! If this landed in your spam folder, drag it into your main folder. </p>",
     });
 
     console.log("Successfully added to the newsletter:", data);
