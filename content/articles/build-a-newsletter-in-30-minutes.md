@@ -7,9 +7,9 @@ heroImage: "/resendandnuxt.png"
 
 By the end of this article you should have something that looks like this and is a fully functioning newsletter for free!
 
-
+::markdown-image
 ![News letter example](/blogs/newsletter.png)
-
+::
 
 ## Initial Setup
 
