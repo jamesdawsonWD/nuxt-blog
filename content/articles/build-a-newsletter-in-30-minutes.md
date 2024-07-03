@@ -17,6 +17,9 @@ We need to create a new project.
 
 ::code-group
 
+```bash [pnpm]
+pnpm dlx nuxi@latest init <project-name>
+```
 ```bash [npm]
 npx nuxi@latest init <project-name>
 ```
@@ -25,9 +28,6 @@ npx nuxi@latest init <project-name>
 yarn dlx nuxi@latest init <project-name>
 ```
 
-```bash [pnpm]
-pnpm dlx nuxi@latest init <project-name>
-```
 
 ```bash [bun]
 bunx nuxi@latest init <project-name>
@@ -39,6 +39,9 @@ We will also add typescript.
 
 ::code-group
 
+```bash [pnpm]
+pnpm add -D typescript
+```
 ```bash [npm]
 npm install -D typescript
 ```
@@ -47,9 +50,6 @@ npm install -D typescript
 yarn add -D typescript
 ```
 
-```bash [pnpm]
-pnpm add -D typescript
-```
 
 ```bash [bun]
 bun add -d typescript
@@ -61,6 +61,9 @@ and finally we will add tailwind.
 
 ::code-group
 
+```bash [pnpm]
+pnpm dlx nuxi@latest module add @nuxtjs/tailwindcss
+```
 ```bash [npm]
 npx nuxi@latest module add @nuxtjs/tailwindcss
 ```
@@ -69,9 +72,6 @@ npx nuxi@latest module add @nuxtjs/tailwindcss
 yarn dlx nuxi@latest module add @nuxtjs/tailwindcss
 ```
 
-```bash [pnpm]
-pnpm dlx nuxi@latest module add @nuxtjs/tailwindcss
-```
 
 ```bash [bun]
 bunx nuxi@latest module add @nuxtjs/tailwindcss
@@ -83,6 +83,9 @@ We now want to add the shadcn nuxt module.
 
 ::code-group
 
+```bash [pnpm]
+pnpm dlx nuxi@latest module add shadcn-nuxt
+```
 ```bash [npm]
 npx nuxi@latest module add shadcn-nuxt
 ```
@@ -91,9 +94,6 @@ npx nuxi@latest module add shadcn-nuxt
 yarn dlx nuxi@latest module add shadcn-nuxt
 ```
 
-```bash [pnpm]
-pnpm dlx nuxi@latest module add shadcn-nuxt
-```
 
 ```bash [bun]
 bunx nuxi@latest module add shadcn-nuxt
@@ -124,6 +124,9 @@ Run the setup CLI.
 
 ::code-group
 
+```bash [pnpm]
+pnpm dlx shadcn-vue@latest init
+```
 ```bash [npm]
 npx shadcn-vue@latest init
 ```
@@ -132,9 +135,6 @@ npx shadcn-vue@latest init
 yarn dlx shadcn-vue@latest init
 ```
 
-```bash [pnpm]
-pnpm dlx shadcn-vue@latest init
-```
 
 ```bash [bun]
 bunx shadcn-vue@latest init
@@ -162,6 +162,9 @@ That is all the setup done! All we need to do now is add the input and button co
 
 ::code-group
 
+```bash [pnpm]
+pnpm dlx npx shadcn-vue@latest add button input 
+```
 ```bash [npm]
 npx npx shadcn-vue@latest add button input
 ```
@@ -170,9 +173,6 @@ npx npx shadcn-vue@latest add button input
 yarn dlx npx shadcn-vue@latest add button input
 ```
 
-```bash [pnpm]
-pnpm dlx npx shadcn-vue@latest add button input 
-```
 
 ```bash [bun]
 bunx npx shadcn-vue@latest add button input

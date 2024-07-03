@@ -28,6 +28,7 @@
           y: 0,
         },
       }"
+      class="[&>pre]:!my-0 [&>pre]:rounded-t-[0px]"
     >
       <component
         :is="selectedTab?.component"
@@ -42,9 +43,9 @@
 import type { PropType } from "vue";
 
 const config = {
-  wrapper: "relative [&>div:last-child]:!my-0 [&>div:last-child]:!static my-5",
+  wrapper: "relative [&>div:last-child]:!my-0 [&>div:last-child]:!static my-5 ",
   header:
-    "flex items-center gap-1 border border-border dark:border-border rounded-md overflow-hidden p-2",
+    "flex items-center gap-1 border border-border dark:border-border rounded-t-md overflow-hidden p-2",
   tab: {
     base: "px-2 py-1.5 focus:outline-none text-gray-700 dark:text-gray-200 text-sm rounded-md flex items-center gap-1.5",
     active: "bg-gray-100 dark:bg-gray-800",
