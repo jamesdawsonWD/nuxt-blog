@@ -214,7 +214,7 @@ const handleSubmitNewsletter = async (email: string) => {
       </div>
     </section>
     <section
-      class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mx-auto gap-20 pt-40 px-8 md:px-12 lg:px-40 "
+      class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mx-auto gap-20 pt-40 px-8 md:px-12 lg:px-40"
       v-motion="{
         initial: {
           opacity: 0,

@@ -5,14 +5,13 @@ export default defineEventHandler(async (event: any) => {
   const { email } = await readBody(event);
 
   try {
-    const { data, error } = await resend.contacts.create({
+    const { error } = await resend.contacts.create({
       email,
       unsubscribed: false,
       audienceId: "383eb4fa-4374-4ab4-9d4e-ed098225bcaa",
     });
 
     if (error) {
-      console.log("Error creating contact:", error);
       return {
         statusCode: 400,
         body: error.message,
@@ -26,13 +25,11 @@ export default defineEventHandler(async (event: any) => {
       html: "<p>Thank you so much for joining the community and supporting our mission of bring builders together. <strong>We drop our newsletter every Sunday</strong>! So make sure you keep an eye out for that! If this landed in your spam folder, drag it into your main folder. </p>",
     });
 
-    console.log("Successfully added to the newsletter:", data);
     return {
       statusCode: 200,
       body: "You have been added to the newsletter",
     };
   } catch (err) {
-    console.log("Unexpected error:", err);
     return {
       statusCode: 500,
       body: "Internal Server Error",

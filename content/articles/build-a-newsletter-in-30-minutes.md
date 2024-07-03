@@ -5,7 +5,13 @@ pubDate: "Jul 01 2024"
 heroImage: "/resendandnuxt.png"
 ---
 
-Let’s not waste any time, firstly you need to select what framework you are going to use. I will be building this in Nuxt, because that is my favourite!
+By the end of this article you should have something that looks like this and is a fully functioning newsletter for free!
+
+
+![News letter example](/blogs/newsletter.png)
+
+
+## Initial Setup
 
 We need to create a new project.
 
@@ -173,6 +179,8 @@ bunx npx shadcn-vue@latest add button input
 ```
 ::
 
+## Build a basic app
+
 Amazing, now let’s make ourselves a quick landing page. Replace the following code in your `app.vue` file.
 
 ::code-group
@@ -197,12 +205,122 @@ Amazing, now let’s make ourselves a quick landing page. Replace the following 
 
 
 
+
 This should all do the job! We now need an endpoint to send the signup request to, along with the users actual email address.
 
-Now we can implement Resends logic. First we need to go to Resend, create an account and get our API key. Then we just add it to our .env file.
+## Backend with Resend
 
-Cool, so now we add in the code to add someone to our audience and we send them a thankyou email.
+Now we can implement Resends logic. First we need [create an account with Resend](https://resend.com/signup) and [get your API key](https://resend.com/docs/dashboard/api-keys/introduction). 
 
-Finally all that is left to do is to hook the frontend up to this api call…
+Once you have your API key. You should create a `.env` file at the root of your directory and add the API key here.
 
-And we have a working newsletter
+::code-group
+
+```bash [.env]
+RESEND_API_KEY=you_key_goes_here
+```
+::
+
+
+Now we need to create an endpoint that will handle adding the email address to our resend audience and sending them a thankyou email.
+
+Create a new file in `server/api/newsletter.post.ts` and add the following code.
+
+```ts
+import { Resend } from "resend";
+
+export default defineEventHandler(async (event: any) => {
+  const resend = new Resend(process.env.RESNED_API_KEY);
+  const { email } = await readBody(event);
+
+  try {
+    const { error } = await resend.contacts.create({
+      email,
+      unsubscribed: false,
+      audienceId: YOUR_AUDIENCE_ID,
+    });
+
+    if (error) {
+      return {
+        statusCode: 400,
+        body: error.message,
+      };
+    }
+
+    await resend.emails.send({
+      from: "onboarding@resend.dev",
+      to: email,
+      subject: "Hello",
+      html: "<p>Thank you for joining my newsletter</p>",
+    });
+
+    return {
+      statusCode: 200,
+      body: "You have been added to the newsletter",
+    };
+  } catch (err) {
+    return {
+      statusCode: 500,
+      body: "Internal Server Error",
+    };
+  }
+});
+```
+
+Finally all that is left to do is to hook the frontend up to this api call
+
+
+```ts
+const handleSubmitNewsletter = async (email: string) => {
+  const response = await $fetch("/api/newsletter", {
+    method: "POST",
+    body: { email },
+  });
+
+  if (response.statusCode === 200) {
+    toast(response.body);
+  } else {
+    toast("Error", {
+      description: response.body || "An error occurred",
+    });
+  }
+};
+```
+
+Now just add this function to your current frontend
+
+```vue
+<script lang="ts" setup>
+const email = ref<string | null>(null);
+const handleSubmitNewsletter = async (email: string) => {
+  const response = await $fetch("/api/newsletter", {
+    method: "POST",
+    body: { email },
+  });
+
+  if (response.statusCode === 200) {
+    toast(response.body);
+  } else {
+    toast("Error", {
+      description: response.body || "An error occurred",
+    });
+  }
+};
+</script>
+
+<template>
+  <div class="space-x-2 max-w-md mx-auto my-auto mt-20 border border-border px-6 py-12  rounded-lg">
+    <p class="pl-2">Hey 👋</p>
+    <h1 class="text-3xl font-extrabold  mb-2">Join my newsletter!</h1>
+    <p class=" mb-16">We talk about <i>amazing things</i>, delivered to your inbox <b>every Saturday</b>.</p>
+    <div class="flex gap-2 ">
+
+
+    <Input type="email" placeholder="Your email" v-model="email"/>
+    <Button @click="handleSubmitNewsletter(email)">Join newsletter</Button>
+    </div>
+ </div>
+</template>
+```
+
+And we have a working newsletter!
