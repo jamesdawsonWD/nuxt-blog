@@ -2,6 +2,7 @@
 title: "How to avoid spaghetti code in your vue files"
 description: "Structuring vue files with inline composables"
 pubDate: "May 14 2024"
+date: "2024-05-14"
 heroImage: "/robot-spaghetti.webp"
 component: ""
 ---

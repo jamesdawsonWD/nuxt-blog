@@ -2,6 +2,7 @@
 title: "Create a newsletter site for free in 30 minutes"
 description: "We will create a Newsletter website in Nuxt in less than 30 minutes!"
 pubDate: "Jul 01 2024"
+date: "2024-07-01"
 heroImage: "/resendandnuxt.png"
 component: ""
 ---

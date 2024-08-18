@@ -2,6 +2,7 @@
 title: "The difference between == and === in javascript"
 description: "Understanding the difference ."
 pubDate: "Feb 13 2024"
+date: "2024-02-13"
 heroImage: "/blog-comparisions.png"
 component: ""
 ---

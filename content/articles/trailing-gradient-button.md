@@ -2,6 +2,7 @@
 title: "How to build a trailing gradient button"
 description: "Step by step reverse design engineering a trailing conic gradient button"
 pubDate: "Aug 18 2024"
+date: "2024-08-18"
 heroImage: ""
 component: "RaycastButton"
 ---
