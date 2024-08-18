@@ -184,7 +184,7 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
         },
       }"
     >
-      <ContentList :query="query" path="/articles" v-slot="{ list }">
+      <ContentList  path="/articles" v-slot="{ list }">
         <NuxtLink
           v-for="article in list.reverse()"
           :key="article._path"
