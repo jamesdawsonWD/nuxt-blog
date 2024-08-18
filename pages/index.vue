@@ -184,37 +184,39 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
         },
       }"
     >
-      <ClientOnly>
-        <ContentList :query="query" path="/articles" v-slot="{ list }">
-          <NuxtLink
-            v-for="article in list.reverse()"
-            :key="article._path"
-            class="prose w-fit mx-auto"
-            :to="`${article._path}`"
-          >
-            <NuxtImg
-              v-if="article.heroImage"
-              :width="500"
-              :height="300"
-              :src="`/blogs/${article.heroImage}`"
-              class="rounded-xl"
-            />
-            <component :is="article.component" v-else />
-            <h2 class="text-foreground text-xl mt-4 font-semibold px-2">
-              {{ article.title }}
-            </h2>
-            <p class="text-foreground px-2">{{ article.description }}</p>
-            <div class="flex justify-between items-center px-2 mt-4">
-              <p class="text-foreground font-extralight tracking-wide">
-                James Dawson
-              </p>
-              <p class="text-foreground font-extralight tracking-wide">
-                {{ article.pubDate }}
-              </p>
-            </div>
-          </NuxtLink>
-        </ContentList>
-      </ClientOnly>
+      <ContentList :query="query" path="/articles" v-slot="{ list }">
+        <NuxtLink
+          v-for="article in list.reverse()"
+          :key="article._path"
+          class="prose w-fit mx-auto"
+          :to="`${article._path}`"
+        >
+          <NuxtImg
+            v-if="article.heroImage"
+            :width="500"
+            :height="300"
+            :src="`/blogs/${article.heroImage}`"
+            class="rounded-xl"
+          />
+          <div v-else>
+            <ClientOnly>
+              <component :is="article.component" />
+            </ClientOnly>
+          </div>
+          <h2 class="text-foreground text-xl mt-4 font-semibold px-2">
+            {{ article.title }}
+          </h2>
+          <p class="text-foreground px-2">{{ article.description }}</p>
+          <div class="flex justify-between items-center px-2 mt-4">
+            <p class="text-foreground font-extralight tracking-wide">
+              James Dawson
+            </p>
+            <p class="text-foreground font-extralight tracking-wide">
+              {{ article.pubDate }}
+            </p>
+          </div>
+        </NuxtLink>
+      </ContentList>
     </section>
   </NuxtLayout>
 </template>
