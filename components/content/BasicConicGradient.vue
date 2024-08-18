@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full flex items-center justify-center my-20">
+    <div class="w-full flex items-center justify-center my-20 py-20">
 
         <div class="basic-conic w-80 h-80"></div>
     </div>

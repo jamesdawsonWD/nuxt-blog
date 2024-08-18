@@ -2,7 +2,6 @@
 import type { _opacity } from "#tailwind-config/theme";
 import { useResizeObserver } from "@vueuse/core";
 import Input from "~/components/ui/input/Input.vue";
-import { toast } from "vue-sonner";
 
 const subtitleRef = ref<HTMLElement | null>(null);
 const headerRef = ref<HTMLElement | null>(null);
@@ -10,12 +9,6 @@ const subtitleHeight = ref(0);
 const headerHeight = ref(0);
 const subtitleX = ref(0);
 const rollTextSpeed = 200;
-const email = ref<string | null>(null);
-const isSignedup = ref(false);
-
-onMounted(() => {
-  isSignedup.value = !!localStorage.getItem("signedup");
-});
 
 useResizeObserver([subtitleRef, headerRef], (entries) => {
   const subtitle = entries[0];
@@ -25,24 +18,6 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
   subtitleHeight.value = sHeight;
   headerHeight.value = hHeight;
 });
-
-const handleSubmitNewsletter = async (email: string) => {
-  const response = await $fetch("/api/newsletter", {
-    method: "POST",
-    body: { email },
-  });
-
-  if (response.statusCode === 200) {
-    toast(response.body);
-    localStorage.setItem("signedup", "true");
-    isSignedup.value = true;
-  } else {
-    console.log("Error in handleSubmitNewsletter:", response.body);
-    toast("Error", {
-      description: response.body || "An error occurred",
-    });
-  }
-};
 </script>
 <template>
   <NuxtLayout>
@@ -190,26 +165,7 @@ const handleSubmitNewsletter = async (email: string) => {
           }"
           class="flex items-center justify-center flex-col gap-8 pt-20"
         >
-          <div class="flex gap-4 max-w-md w-full" v-if="!isSignedup">
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              class="w-full text-foreground"
-              v-model="email"
-            />
-            <Button class="mx-auto" @click="handleSubmitNewsletter(email)"
-              >Join for free</Button
-            >
-          </div>
-          <p
-            v-else
-            class="font-inter text-foreground text-md xl:text-lg text-center"
-          >
-            You are <span class="text-primary">signed up</span>
-          </p>
-          <p class="font-inter text-foreground text-md xl:text-lg text-center">
-            New blog posts <i>every Sunday</i>.
-          </p>
+          <BespokeNewsLetterSignup />
         </div>
       </div>
     </section>
@@ -232,11 +188,13 @@ const handleSubmitNewsletter = async (email: string) => {
           :to="`${article._path}`"
         >
           <NuxtImg
+            v-if="article.heroImage"
             :width="500"
             :height="300"
             :src="`/blogs/${article.heroImage}`"
             class="rounded-xl"
           />
+          <component :is="article.component" v-else />
           <h2 class="text-foreground text-xl mt-4 font-semibold px-2">
             {{ article.title }}
           </h2>
