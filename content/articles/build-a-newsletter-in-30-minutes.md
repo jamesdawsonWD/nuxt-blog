@@ -3,6 +3,7 @@ title: "Create a newsletter site for free in 30 minutes"
 description: "We will create a Newsletter website in Nuxt in less than 30 minutes!"
 pubDate: "Jul 01 2024"
 heroImage: "/resendandnuxt.png"
+component: ""
 ---
 
 By the end of this article you should have something that looks like this and is a fully functioning newsletter for free!

@@ -3,7 +3,7 @@ title: "How to build a trailing gradient button"
 description: "Step by step reverse design engineering a trailing conic gradient button"
 pubDate: "Aug 18 2024"
 heroImage: ""
-component: "RaycastConicStart"
+component: "RaycastButton"
 ---
 
 Ok, so I have been getting really inspired in my designs recently because of the [raycast landing page](https://raycast.com). The whole site is really beautiful but there is one thing that I am really into.

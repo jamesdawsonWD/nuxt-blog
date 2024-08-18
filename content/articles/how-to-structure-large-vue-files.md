@@ -3,6 +3,7 @@ title: "How to avoid spaghetti code in your vue files"
 description: "Structuring vue files with inline composables"
 pubDate: "May 14 2024"
 heroImage: "/robot-spaghetti.webp"
+component: ""
 ---
 
 I must confess that I have been guilty in the past of following some pretty abhorent techniques for code organization in my vue learning journey but composables are the way to go! Let's get into it!

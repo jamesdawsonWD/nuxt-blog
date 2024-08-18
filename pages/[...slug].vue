@@ -32,7 +32,10 @@ const rollTextSpeed = 300;
           :src="`/blogs/${doc.heroImage}`"
           class="rounded-xl"
         />
-        <component :is="doc.component" v-else />
+        <div v-else class="py-20">
+
+          <component :is="doc.component"  />
+        </div>
         <h1 class="text-center">
           {{ doc.title }}
         </h1>

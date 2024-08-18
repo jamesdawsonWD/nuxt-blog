@@ -3,6 +3,7 @@ title: "The difference between == and === in javascript"
 description: "Understanding the difference ."
 pubDate: "Feb 13 2024"
 heroImage: "/blog-comparisions.png"
+component: ""
 ---
 
 In JavaScript, comparing values can be done in two primary ways: using strict equality (`===`) and loose equality (`==`). These operators may seem similar at first glance, but they behave quite differently and can leaving you scratching your head if you don\'t know what is going on.
