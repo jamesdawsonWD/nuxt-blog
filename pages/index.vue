@@ -2,7 +2,10 @@
 import type { _opacity } from "#tailwind-config/theme";
 import { useResizeObserver } from "@vueuse/core";
 import Input from "~/components/ui/input/Input.vue";
-
+const query = {
+  path: "/articles",
+  sort: [{ date: -1 }],
+};
 
 const subtitleRef = ref<HTMLElement | null>(null);
 const headerRef = ref<HTMLElement | null>(null);
@@ -182,13 +185,9 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
       }"
     >
       <ClientOnly>
-        <ContentList
-          :query="{ sort: [{ date: 1 }] }"
-          path="/articles"
-          v-slot="{ list }"
-        >
+        <ContentList :query="query" path="/articles" v-slot="{ list }">
           <NuxtLink
-            v-for="article in list"
+            v-for="article in list.reverse()"
             :key="article._path"
             class="prose w-fit mx-auto"
             :to="`${article._path}`"
