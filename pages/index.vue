@@ -198,9 +198,9 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
             :src="`/blogs/${article.heroImage}`"
             class="rounded-xl"
           />
-          <div v-else>
+          <!-- <div v-else>
             <RaycastButton v-if="article.component === 'RaycastButton'" />
-          </div>
+          </div> -->
           <h2 class="text-foreground text-xl mt-4 font-semibold px-2">
             {{ article.title }}
           </h2>
