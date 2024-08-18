@@ -184,9 +184,9 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
         },
       }"
     >
-      <ContentList  path="/articles" v-slot="{ list }">
+      <ContentList :query="query" path="/articles" v-slot="{ list }">
         <NuxtLink
-          v-for="article in list.reverse()"
+          v-for="article in list"
           :key="article._path"
           class="prose w-fit mx-auto"
           :to="`${article._path}`"
@@ -198,9 +198,11 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
             :src="`/blogs/${article.heroImage}`"
             class="rounded-xl"
           />
-          <!-- <div v-else>
-            <RaycastButton v-if="article.component === 'RaycastButton'" />
-          </div> -->
+          <div v-else>
+            <ClientOnly>
+              <component :is="article.component" />
+            </ClientOnly>
+          </div>
           <h2 class="text-foreground text-xl mt-4 font-semibold px-2">
             {{ article.title }}
           </h2>
