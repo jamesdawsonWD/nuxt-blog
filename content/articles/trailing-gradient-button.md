@@ -7,7 +7,7 @@ heroImage: ""
 component: "RaycastButton"
 ---
 
-Ok, so I have been getting really inspired in my designs recently because of the [raycast landing page](https://raycast.com). The whole site is really beautiful but there is one thing that I am really into.
+Ok, so I have been getting really inspired in recently by the [raycast landing page](https://raycast.com). The whole site is really beautiful but there is one thing that I am really wanted to learn how to make this cool button effect.
 
 It took me a lot longer than I want to admit to get this to finally work and the process was super fascinating. Let's dive in!
 
@@ -17,16 +17,18 @@ This button has a lot of different moving parts but lets look at the most basic 
 
 `The conic-gradient() CSS function creates an image consisting of a gradient with color transitions rotated around a center point (rather than radiating from the center). Example conic gradients include pie charts and color wheels.`
 
-Let's look at at basic conic gradient.
+Let's look at a basic conic gradient.
 
 ```css
-background: conic-gradient(red, orange, yellow, green, blue);
+.basic-conic-gradient {
+  background: conic-gradient(red, orange, yellow, green, blue);
+}
 ```
 
 ::basic-conic-gradient
 ::
 
-Pretty! Now lets get back to the raycast button. If we add the following code, we will get the conic that is being used for the trailing effect.
+Pretty! Now let's manipulate this conic to match the trailing effect of the button.
 
 ```css
 .basic-conic {
@@ -40,6 +42,9 @@ Pretty! Now lets get back to the raycast button. If we add the following code, w
 }
 ```
 
+::raycast-conic-static
+::
+
 What we have here is a conic that has been rotated `-80deg` (Which is why the gradient is pointing to the top left corner and not straight up). It is positioned at `x: 30px y:15px`, this is why it is moved in slightly from the top left corner as well. The rest of the code is implementing the actual conic gradient so it goes from `transparent` to `#eca5a7` to `transparent` again at each stop and finally `#452324`
 
 ## The animation breakdown
@@ -47,9 +52,9 @@ What we have here is a conic that has been rotated `-80deg` (Which is why the gr
 ::raycast-conic-start
 ::
 
-Ok cool, but this doesn't look anything like the button! Yes, we have a few more steps to go. I think now what we should do is try and get this gradient to move. There are too options for this, you can animate it in javascript or you can alter the properties of the conic itself. The implementation that I did uses pure css, though it is using the [@property](https://developer.mozilla.org/en-US/docs/Web/CSS/@property) which is a css at-rule from the [Houdini API ](https://developer.mozilla.org/en-US/docs/Web/API/Houdini_APIs) and is not available on all legacy browsers, so check it out before you add it to production.
+Now we can get into the fun stuff, the animation. We need to get this gradient to move all the way round the button. There are too options for this, you can animate it in javascript or you can alter the properties of the conic itself. The implementation that I did uses pure css, though it is using the [@property](https://developer.mozilla.org/en-US/docs/Web/CSS/@property) which is a css at-rule from the [Houdini API ](https://developer.mozilla.org/en-US/docs/Web/API/Houdini_APIs) and is not available on all legacy browsers, so check it out before you add it to production.
 
-Let us get the gradient moving back and forward first and then we can worry about the rotation. Let's look at the following example.
+Let's get the gradient moving back and forward first and then we can worry about the rotation after that. Check out the following example.
 
 ```html
 <div class="basic-conic animate"></div>
@@ -101,7 +106,7 @@ Let us get the gradient moving back and forward first and then we can worry abou
 ::raycast-conic-moving-position
 ::
 
-Are you starting to see it? Next up what we need to add is the rotation.
+Are you starting to see it? The animation moves the the gradient from one edge to the other, it then pauses, and moves back. The pause will allow us to execute the rotation before the gradient moves back to the start of the button. Check out the rotation code below.
 
 ```html
 <div class="basic-conic animate"></div>
@@ -171,6 +176,8 @@ Are you starting to see it? Next up what we need to add is the rotation.
 
 ::raycast-conic-moving-and-rotating
 ::
+
+It is starting to really come together! As you can see there are now two `keyframes` executing this and the timing is very precise. Once the move animation reaches the end, the rotate animation executes, and round and round it goes. 
 
 Now all we need to do is add the masking layer with our actual button ontop. We will also add a cool glowing effect and we should have the final component!
 

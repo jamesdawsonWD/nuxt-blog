@@ -29,7 +29,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 :root {
   --r2: 0deg;
   --key-bg-end-color: #0d0d0d;
