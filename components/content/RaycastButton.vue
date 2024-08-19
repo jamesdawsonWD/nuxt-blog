@@ -1,11 +1,7 @@
 <template>
   <div class="container my-20">
     <div class="announcement animate">
-      <a
-        class="announcement-link no-underline"
-        rel="external"
-        href="/blog/more-ai-models"
-      >
+      <a class="announcement-link no-underline" rel="external">
         <span class="no-underline !font-white text-primary">Pretty cool?</span>
         <span class="muted flex no-underline"
           >Click me and see
