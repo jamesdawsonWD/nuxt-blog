@@ -188,30 +188,34 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
         <NuxtLink
           v-for="article in list"
           :key="article._path"
-          class="prose w-fit mx-auto"
+          class="w-fit mx-auto flex flex-col bg-zinc-950 p-4 rounded-xl border border-zinc-900"
           :to="`${article._path}`"
         >
-          <NuxtImg
-            v-if="article.heroImage"
-            :width="500"
-            :height="300"
-            :src="`/blogs/${article.heroImage}`"
-            class="rounded-xl"
-          />
-          <div v-else>
+          <div v-if="article.heroImage" class="w-full mb-6">
+            <NuxtImg
+              fit="fill"
+              :width="500"
+              :height="300"
+              :src="`/blogs/${article.heroImage}`"
+              class="rounded-xl"
+            />
+          </div>
+          <div v-else class="bg-background rounded-xl mb-6">
             <ClientOnly>
-              <component :is="article.component" />
+              <div>
+                <component :is="article.component" />
+              </div>
             </ClientOnly>
           </div>
-          <h2 class="text-foreground text-xl mt-4 font-semibold px-2">
+          <h2 class="text-foreground mt-4 font-semibold px-2 mb-4">
             {{ article.title }}
           </h2>
-          <p class="text-foreground px-2">{{ article.description }}</p>
+          <p class="text-foreground px-2 text-sm">{{ article.description }}</p>
           <div class="flex justify-between items-center px-2 mt-4">
-            <p class="text-foreground font-extralight tracking-wide">
+            <p class="text-foreground font-extralight tracking-wide text-sm">
               James Dawson
             </p>
-            <p class="text-foreground font-extralight tracking-wide">
+            <p class="text-foreground font-extralight tracking-wide text-sm">
               {{ article.pubDate }}
             </p>
           </div>
