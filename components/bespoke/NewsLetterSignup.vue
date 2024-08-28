@@ -13,7 +13,7 @@
   <p v-else class="font-inter text-foreground text-md xl:text-lg text-center">
     You are <span class="text-primary">signed up</span>
   </p>
-  <p class="font-inter text-foreground text-md xl:text-lg text-center">
+  <p class="font-inter text-foreground text-sm text-center">
     New blog posts <i>every Sunday</i>.
   </p>
 </template>

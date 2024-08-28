@@ -25,8 +25,8 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
 </script>
 <template>
   <NuxtLayout>
-    <section class="mx-auto mt-60">
-      <div class="relative">
+    <section class="mx-auto mt-60 w-full max-w-7xl">
+      <div class="relative flex flex-col items-center">
         <h5
           class="font-inter font-extralight text-foreground text-center leading-none text-xl tracking-[10px] lg:tracking-[30px] absolute -top-10 left-0 right-0"
           v-motion="{
@@ -44,7 +44,7 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
           James Dawson
         </h5>
         <h2
-          class="text-foreground font-julius-sans text-[9vw] leading-none text-center"
+          class="text-foreground font-julius-sans text-[5vw] leading-none text-center"
           ref="subtitleRef"
         >
           <span
@@ -109,13 +109,9 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
             >for
           </span>
         </h2>
-        <div
-          :style="{ top: `${Math.floor(subtitleHeight) / 1.6}px` }"
-          class="absolute left-0 right-0"
-          ref="headerRef"
-        >
+        <div class="left-0 m-auto" ref="headerRef">
           <h1
-            class="text-primary font-lalezar text-[21vw] leading-none text-center drop-shadow-header"
+            class="text-primary font-lalezar text-[12vw] leading-none drop-shadow-header"
             v-motion="{
               initial: {
                 opacity: 0,
@@ -133,9 +129,9 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
           </h1>
         </div>
       </div>
-      <div :style="{ 'margin-top': `${Math.floor(headerHeight) / 1.88}px` }">
+      <div>
         <p
-          class="font-inter text-foreground text-center pt-20 text-lg xl:text-2xl"
+          class="font-inter text-foreground text-center text-lg xl:text-2xl"
           v-motion="{
             initial: {
               opacity: 0,
@@ -174,7 +170,7 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
       </div>
     </section>
     <section
-      class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mx-auto gap-20 pt-40 px-8 md:px-12 lg:px-40"
+      class="grid grid-cols-1 md:grid-cols-2 mx-auto gap-20 pt-40 px-8 md:px-12 lg:px-40 w-full max-w-7xl"
       v-motion="{
         initial: {
           opacity: 0,
@@ -188,24 +184,37 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
         <NuxtLink
           v-for="article in list"
           :key="article._path"
-          class="w-fit mx-auto flex flex-col bg-zinc-950 p-4 rounded-xl border border-zinc-900"
+          class="w-full mx-auto flex flex-col bg-zinc-950 p-4 rounded-xl border border-zinc-900"
           :to="`${article._path}`"
         >
-          <div v-if="article.heroImage" class="w-full mb-6">
-            <NuxtImg
-              fit="fill"
-              :width="500"
-              :height="300"
-              :src="`/blogs/${article.heroImage}`"
-              class="rounded-xl"
-            />
-          </div>
-          <div v-else class="bg-background rounded-xl mb-6">
-            <ClientOnly>
-              <div>
-                <component :is="article.component" />
-              </div>
-            </ClientOnly>
+          <div
+            class="w-full mb-6"
+            style="
+              height: 300px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <div v-if="article.heroImage" class="w-full h-full">
+              <NuxtImg
+                fit="fill"
+                :width="500"
+                :height="300"
+                :src="`/blogs/${article.heroImage}`"
+                class="rounded-xl w-full h-full object-cover"
+              />
+            </div>
+            <div
+              v-else
+              class="bg-background rounded-xl h-full w-full flex items-center justify-center"
+            >
+              <ClientOnly>
+                <div>
+                  <component :is="article.component" class="h-full w-full" />
+                </div>
+              </ClientOnly>
+            </div>
           </div>
           <h2 class="text-foreground mt-4 font-semibold px-2 mb-4">
             {{ article.title }}
