@@ -184,11 +184,11 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
         <NuxtLink
           v-for="article in list"
           :key="article._path"
-          class="w-full mx-auto flex flex-col bg-zinc-950 p-4 rounded-xl border border-zinc-900"
+          class="w-full mx-auto flex flex-col bg-zinc-950 p-6 rounded-xl border border-zinc-900"
           :to="`${article._path}`"
         >
           <div
-            class="w-full mb-6"
+            class="w-full"
             style="
               height: 300px;
               display: flex;
@@ -216,15 +216,15 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
               </ClientOnly>
             </div>
           </div>
-          <h2 class="text-foreground mt-4 font-semibold px-2 mb-4">
+          <h2 class="text-foreground mt-6 font-semibold px-2 mb-1">
             {{ article.title }}
           </h2>
-          <p class="text-foreground px-2 text-sm">{{ article.description }}</p>
-          <div class="flex justify-between items-center px-2 mt-4">
-            <p class="text-foreground font-extralight tracking-wide text-sm">
-              James Dawson
-            </p>
-            <p class="text-foreground font-extralight tracking-wide text-sm">
+          <p class="text-zinc-300 px-2 text-sm">{{ article.description }}</p>
+          <div
+            class="flex justify-between items-center px-2 mt-6 text-zinc-400"
+          >
+            <p class="font-extralight tracking-wide text-sm">James Dawson</p>
+            <p class="font-extralight tracking-wide text-sm">
               {{ article.pubDate }}
             </p>
           </div>
