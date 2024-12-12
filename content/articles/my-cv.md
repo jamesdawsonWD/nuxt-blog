@@ -7,7 +7,7 @@ heroImage: "/james.jpg"
 component: ""
 ---
 
-_78% engineering + 30% pretty boxes_  
+_70% engineering + 30% pretty boxes_  
 **Senior Design Engineer**
 
 ## The journey, so far...
