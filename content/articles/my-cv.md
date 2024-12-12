@@ -28,7 +28,7 @@ Hackathons have become a core part of my life. I’ve traveled globally to confe
 
 My time at Gitcoin was very brief—shortly after I joined, I was told I’d be on a team building a hackathons platform that would compete directly with my own community. Despite this short stint, I’m proud of making it through their rigorous interview processes!
 
-### [Freelancer](https://www.freelancer.com/)
+### Freelancer
 
 **Role:** Web3 Freelancing (2020-2022)
 
