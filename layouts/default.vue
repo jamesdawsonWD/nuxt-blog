@@ -23,14 +23,14 @@ const { hasPassed: scrollPassed } = useCheckScrolledPassedPoint(100);
 </script>
 <template>
   <div class="dark bg-background w-full relative overflow-x-hidden">
-    <div class="w-screen h-40 absolute -top-6 z-30 blur-xl opacity-20"></div>
+    <div class="w-screen h-28 absolute -top-6 z-30 blur-xl opacity-20"></div>
     <div
       class="flex w-full px-24 py-4 items-center justify-center z-40 fixed transition"
       :class="[scrollPassed ? 'bg-background border-b border-primary/60 ' : '']"
     >
       <NuxtLink to="/">
         <SvgoBuidlLogo
-          class="h-16 w-40"
+          class="h-8 w-32"
           :fontControlled="false"
           :filled="true"
         />

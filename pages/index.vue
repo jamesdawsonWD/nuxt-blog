@@ -198,7 +198,6 @@ useResizeObserver([subtitleRef, headerRef], (entries) => {
           >
             <div v-if="article.heroImage" class="w-full h-full">
               <NuxtImg
-                fit="fill"
                 :width="500"
                 :height="300"
                 :src="`/blogs/${article.heroImage}`"
