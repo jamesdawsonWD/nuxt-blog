@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { _opacity } from "#tailwind-config/theme";
 import { useResizeObserver } from "@vueuse/core";
-import Input from "~/components/ui/input/Input.vue";
 const query = {
   path: "/articles",
   sort: [{ date: -1 }],

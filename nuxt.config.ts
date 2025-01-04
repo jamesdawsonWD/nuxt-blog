@@ -1,17 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  app: {
-    head: {
-      script: [
-        {
-          src: "https://static.cloudflareinsights.com/beacon.min.js",
-          defer: true,
-          "data-cf-beacon": '{"token": "94685abedea842ca92554bc2c04f61e6"}',
-        },
-      ],
-    },
-  },
+
   modules: [
     "@nuxt/content",
     "@nuxtjs/tailwindcss",
