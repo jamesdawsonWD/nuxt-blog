@@ -84,4 +84,8 @@
   tbody td {
     @apply border border-border px-4 py-2 text-foreground text-center;
   }
+
+  hr {
+    @apply !border-border;
+  }
 }

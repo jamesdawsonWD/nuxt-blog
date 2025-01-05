@@ -13,8 +13,8 @@ Modern-day programming is all about speed. You install a framework, a UI library
 
 So let's put it to use! Today we are going to look at the different reactivity systems for frontend frameworks. Their strengths and trade offs, which frameworks have chose which and what is really happening under all this abstraction.
 
-Hello, my name is James, a Senior Software Engineer. This is my blog where I rant about product development, design, programming and sometimes music and books. If any of that interests you, join the news letter to receive these blog posts directly to your inbox!
-
+::hello
+::
 ## What is a reactivity system?
 
 Reactivity is a common programming paradigm for mutating or "reacting" to changes between two pieces of separate data. A reactive system automatically updates dependent values when data changes, like how a spreadsheet formula adjusts when you modify a cell.

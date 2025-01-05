@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-4 max-w-md w-full" v-if="!isSignedup">
+  <div class="flex gap-4 max-w-md w-full" v-if="!isSignedup" id="signup-form">
     <Input
       type="email"
       placeholder="Enter your email"

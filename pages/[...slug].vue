@@ -21,10 +21,10 @@ const rollTextSpeed = 300;
           },
         }"
       >
-        <div class="flex justify-between w-full">
-          <p class="text-center">{{ doc.pubDate }}</p>
-          <p>by James Dawson</p>
-        </div>
+        <h1 class="text-center">
+          {{ doc.title }}
+        </h1>
+
         <NuxtImg
           v-if="doc.heroImage"
           :width="1028"
@@ -33,12 +33,19 @@ const rollTextSpeed = 300;
           class="rounded-xl"
         />
         <div v-else class="py-20">
-
-          <component :is="doc.component"  />
+          <component :is="doc.component" />
         </div>
-        <h1 class="text-center">
-          {{ doc.title }}
-        </h1>
+        <div class="flex justify-between items-center w-full mb-8">
+          <p class="text-center m-0">{{ doc.pubDate }}</p>
+
+          <div class="flex gap-4 items-center justify-center">
+            <Avatar>
+              <AvatarImage src="/blogs/james.jpg" alt="@radix-vue" />
+              <AvatarFallback>JD</AvatarFallback>
+            </Avatar>
+            <p class="m-0">James Dawson</p>
+          </div>
+        </div>
         <div>
           <ContentRenderer :value="doc" />
         </div>
